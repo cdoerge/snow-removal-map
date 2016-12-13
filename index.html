@@ -125,15 +125,15 @@
             .on(map)
             .at(latlng)
             .run(function(error, featureCollection) {
-                var snow;
+                var snow, roadname;
                 $.each(featureCollection.features, function(index, feature) {
                     if (feature.layerId === 7) { snow = feature.properties['SNOW'], roadname = feature.properties['ANNO']; }
                 });
-                showSnowPopup(map, latlng, snow);
+                showSnowPopup(map, latlng, snow, roadname);
             });
         }
 
-    var showSnowPopup = function(map, addressLatLng, snow) {
+    var showSnowPopup = function(map, addressLatLng, snow, roadname) {
         if (!snow || snow === 'Null') {
             return false;
         } else {
